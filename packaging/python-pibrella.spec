@@ -1,0 +1,55 @@
+%global srcname pibrella
+
+%global __provides_exclude_from ^(%{python3_sitearch}/.*\\.so)$
+
+Name:           python-pibrella
+Version:        1.4.0
+Release:        1%{?extraver:.%extraver}%{?dist}
+Summary:        Support code and API library for the Pibrella addon board
+
+License:        GPLv3
+URL:            http://pibrella.com/
+# project URL
+# https://github.com/pimoroni/pibrella
+Source0:        https://github.com/pimoroni/pibrella/archive/v%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
+
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
+BuildArch:      noarch
+
+%description
+Support code and API library for the Pibrella addon board.
+
+%package -n python3-%{srcname}
+Summary:        %{summary}
+BuildArch:      noarch
+Requires:       python3-RPi.GPIO
+
+%{?python_provide:%python_provide python3-%{srcname}}
+
+%description -n python3-%{srcname}
+Python 3 library for the Pibrella addon board.
+
+%prep
+%autosetup -n %{srcname}-%{version}
+
+%build
+CFLAGS="${RPM_OPT_FLAGS} -fcommon"
+pushd library
+%py3_build
+popd
+
+%install
+pushd library
+%py3_install
+popd
+
+%files -n python3-%{srcname}
+%doc README.md
+%license library/LICENSE.txt
+%{python3_sitearch}/pibrella
+
+%changelog
+* Sun Feb 14 2021 Petr Menšík <pemensik@redhat.com> - 1.4.0-1
+- Initial package
+
