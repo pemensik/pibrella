@@ -22,13 +22,21 @@ Support code and API library for the Pibrella addon board.
 
 %package -n python3-%{srcname}
 Summary:        %{summary}
-BuildArch:      noarch
 Requires:       python3-RPi.GPIO
 
 %{?python_provide:%python_provide python3-%{srcname}}
 
 %description -n python3-%{srcname}
 Python 3 library for the Pibrella addon board.
+
+%package doc
+Summary:        Set of exampels for the Pibrella addon board library
+Requires:       %{name} = %{version}-%{release}
+
+%{?python_provide:%python_provide python3-%{srcname}}
+
+%description doc
+Examples for the Pibrella addon board.
 
 %prep
 %autosetup -n %{srcname}-%{version}
@@ -47,7 +55,12 @@ popd
 %files -n python3-%{srcname}
 %doc README.md
 %license library/LICENSE.txt
-%{python3_sitearch}/pibrella
+%{python3_sitelib}/pibrella
+%{python3_sitelib}/Pibrella-%{version}-py*.egg-info/
+
+%files doc
+%doc documentation/*.md
+%doc examples
 
 %changelog
 * Sun Feb 14 2021 Petr Menšík <pemensik@redhat.com> - 1.4.0-1
