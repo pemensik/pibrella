@@ -7,7 +7,7 @@ Version:        1.4.0
 Release:        1%{?extraver:.%extraver}%{?dist}
 Summary:        Support code and API library for the Pibrella addon board
 
-License:        GPLv3
+License:        MIT
 URL:            http://pibrella.com/
 # project URL
 # https://github.com/pimoroni/pibrella
