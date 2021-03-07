@@ -11,7 +11,7 @@ License:        MIT
 URL:            http://pibrella.com/
 # project URL
 # https://github.com/pimoroni/pibrella
-Source0:        https://github.com/pimoroni/%{srcname}/archive/v%{version}.tar.gz #/%{srcname}-%{version}.tar.gz
+Source0:        https://github.com/pimoroni/%{srcname}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
