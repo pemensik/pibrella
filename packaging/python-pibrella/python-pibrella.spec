@@ -4,14 +4,14 @@
 
 Name:           python-pibrella
 Version:        1.4.0
-Release:        1%{?extraver:.%extraver}%{?dist}
+Release:        1%{?dist}
 Summary:        Support code and API library for the Pibrella addon board
 
 License:        MIT
 URL:            http://pibrella.com/
 # project URL
 # https://github.com/pimoroni/pibrella
-Source0:        https://github.com/pimoroni/pibrella/archive/v%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
+Source0:        https://github.com/pimoroni/%{srcname}/archive/v%{version}.tar.gz #/%{srcname}-%{version}.tar.gz
 
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
@@ -39,6 +39,7 @@ Requires:       %{name} = %{version}-%{release}
 Examples for the Pibrella addon board.
 
 %prep
+tar tzf %{SOURCE0}
 %autosetup -n %{srcname}-%{version}
 
 %build
